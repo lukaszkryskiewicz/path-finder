@@ -1,0 +1,168 @@
+.hero {
+  background-image: url("../../images/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 1297px;
+  position: relative;
+
+  .hero-inner {
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-style: normal;
+    line-height: normal;
+
+
+    .hero-title {
+      text-shadow: 0 0 118px rgba(0, 0, 0, 0.39);
+      font-size: 100px;
+      letter-spacing: 60px;
+      margin: 0 0 20px 0;
+
+      .last-letter {
+        letter-spacing: 0px;
+      }
+
+    }
+
+    .hero-subtitle {
+      font-size: 36px;
+      letter-spacing: 10.8px;
+      text-align: right;
+    }
+  }
+
+  &::before {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    bottom: -1%;
+    content: '';
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgb(0, 0, 0, 0));
+  }
+}
+
+.navigation {
+  padding: 66px;
+  font-size: 30px;
+  line-height: 27px;
+  font-style: normal;
+  letter-spacing: normal;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+
+
+  .menu-links {
+    display: flex;
+    flex-wrap: no-wrap;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      text-decoration: none;
+      color: $color-one;
+      letter-spacing: 2.25px;
+      padding: 60px;
+
+      &:hover {
+        color: $color-two;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .hero {
+    max-height: 650px;
+
+    .hero-inner {
+      .hero-title {
+        font-size: 100px;
+        letter-spacing: 30px;
+
+      }
+
+      .hero-subtitle {
+        font-size: 30px;
+        line-height: 36px;
+        letter-spacing: 8px;
+      }
+    }
+  }
+
+  .navigation {
+    padding: 45px;
+    font-size: 40px;
+
+    a {
+      padding: 20px;
+
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .hero {
+    max-height: 650px;
+
+    .hero-inner {
+      .hero-title {
+        font-size: 100px;
+        letter-spacing: 30px;
+
+      }
+
+      .hero-subtitle {
+        font-size: 30px;
+        line-height: 36px;
+        letter-spacing: 8px;
+      }
+    }
+  }
+
+  .navigation {
+    padding: 45px;
+    font-size: 40px;
+
+    a {
+      padding: 20px;
+
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    max-height: 450px;
+
+    .hero-inner {
+      .hero-title {
+        font-size: 50px;
+        letter-spacing: 10px;
+
+      }
+
+      .hero-subtitle {
+        font-size: 20px;
+        line-height: 36px;
+        letter-spacing: 5px;
+      }
+    }
+  }
+
+  .navigation {
+    padding: 30px;
+    font-size: 30px;
+
+    a {
+      display: block;
+      padding: 10px;
+
+    }
+  }
+
+}
