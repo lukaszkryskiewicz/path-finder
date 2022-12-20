@@ -1,0 +1,56 @@
+.about-container {
+  position: relative;
+  height: 900px;
+  margin-right: 50px;
+
+  .plan-journeys {
+    position: absolute;
+    width: 800px;
+    height: 550px;
+    top: -50%;
+    right: 45%;
+
+    .plan-journeys-background {
+      background-image: url("../../images/1.jpg");
+      background-size: cover;
+      position: relative;
+      height: 100%;
+      width: 100%;
+    }
+
+    .plan-journeys-titles {
+      position: absolute;
+      text-shadow: 0 0 54px rgba(0, 0, 0, 0.26);
+      text-align: left;
+      bottom: 5%;
+      right: -55%;
+
+    }
+  }
+
+  .minimalize-bordom {
+    position: absolute;
+    width: 1150px;
+    height: 650px;
+    bottom: 5%;
+    right: 0;
+
+    .minimalize-bordom-background {
+      background-image: url("../../images/2.jpg");
+      background-size: cover;
+      position: relative;
+      height: 100%;
+      width: 100%;
+    }
+
+    .minimalize-bordom-titles {
+      position: absolute;
+      text-shadow: 0 0 54px rgba(0, 0, 0, 0.26);
+      text-align: left;
+      top: 10%;
+      left: -30%;
+
+
+    }
+  }
+}

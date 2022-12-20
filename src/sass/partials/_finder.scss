@@ -1,0 +1,54 @@
+.finder-container {
+  position: relative;
+  height: 900px;
+  width: 720px;
+  margin: 0 auto;
+
+  .finder-content {
+    position: absolute;
+    top: -70%;
+    right: 15%; // czy da radę inaczej to wyśrodkować?
+
+
+    .finder-title {
+      text-shadow: 0 0 54px rgba(0, 0, 0, 0.26);
+      letter-spacing: 6px;
+      margin-bottom: 60px;
+    }
+
+    .finder-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      height: 717px;
+      width: 710px;
+      margin: 50px 0 50px 0;
+
+      .field {
+        width: 71px;
+        height: 71px;
+        border: solid 3px white;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    .finder-button {
+      width: 242px;
+      height: 58px;
+      background-color: $color-five;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+
+      .text-button {
+        font-size: 20px;
+        font-weight: $font-regular;
+        letter-spacing: 2px;
+        color: $color-one;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

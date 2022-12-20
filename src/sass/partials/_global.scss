@@ -13,6 +13,7 @@ body {
   font-weight: $font-bold;
   color: $color-one;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .container {
@@ -29,8 +30,4 @@ body {
   >.active {
     display: block;
   }
-}
-
-.upper {
-  text-transform: uppercase;
 }

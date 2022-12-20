@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TASTE Music Portal</title>
+  <title>PathFinder</title>
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +12,7 @@
     href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@700&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
     rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -33,13 +34,45 @@
 
   <div id="pages">
     <section id="about">
+      <div class="about-wrapper"></div>
     </section>
     <section id="finder">
+      <div class="finder-wrapper"></div>
     </section>
   </div>
 
-  <script id="template-" type="text/x-handlebars-template">
-    <section>
+  <script id="template-about" type="text/x-handlebars-template">
+    <section class="about-page">
+      <div class="about-container" data-aos="fade-up">
+        <div class="plan-journeys">
+          <div class="plan-journeys-background">
+            <div class="plan-journeys-titles">
+            <h1 class="plan-journeys-title img-title">Plan your journeys</h1>
+            <h2 class="plan-journeys-subtitle img-subtitle">Pick attractions and book hotels</h2>
+          </div>
+          </div>
+        </div>
+        <div class="minimalize-bordom" data-aos="fade-up">
+          <div class="minimalize-bordom-background">
+            <div class="minimalize-bordom-titles">
+            <h1 class="minimalize-bordom-title img-title">Minimalize boredom</h1>
+            <h2 class="minimalize-bordom-subtitle img-subtitle">Pick routes that are short and attractive</h2>
+          </div>
+          </div>
+        </div>
+    </div>
+    </section>
+  </script>
+
+  <script id="template-finder" type="text/x-handlebars-template">
+    <section class="finder-page">
+      <div class="finder-container">
+        <div class="finder-content">
+          <h1 class="finder-title">{{ title }}</h1>
+          <div class="finder-grid"></div>
+          <button class="finder-button" type="button"><span class="text-button">{{ buttonText }}</span></button>
+        </div>
+      </div>
     </section>
   </script>
 
@@ -51,6 +84,7 @@
     </div>
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="/js/app.js" type="module"></script>
 </body>
 
