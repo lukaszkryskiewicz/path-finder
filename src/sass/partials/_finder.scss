@@ -27,9 +27,19 @@
       .field {
         width: 71px;
         height: 71px;
-        border: solid 3px white;
+        border: solid 3px $color-one;
         margin: 0;
         padding: 0;
+      }
+
+      .clicked-field {
+        background-color: $color-five;
+        z-index: 1;
+      }
+
+      .possible-to-click {
+        background-color: green;
+        opacity: 0.5;
       }
     }
 
