@@ -14,6 +14,7 @@
       text-shadow: 0 0 54px rgba(0, 0, 0, 0.26);
       letter-spacing: 6px;
       margin-bottom: 60px;
+      font-size: 55px;
     }
 
     .finder-grid {
@@ -40,6 +41,10 @@
       .possible-to-click {
         background-color: green;
         opacity: 0.5;
+      }
+
+      .start-end {
+        background-color: green;
       }
     }
 

@@ -7,8 +7,6 @@ class Finder {
     thisFinder.step = 1;
     thisFinder.element = element;
 
-    thisFinder.render();
-
     thisFinder.gridObj = {};
     for (let x = 1; x <= 10; x++) {
       thisFinder.gridObj[x] = {};
@@ -17,6 +15,13 @@ class Finder {
       }
 
     }
+
+    thisFinder.startEndPoints = {
+      start: null,
+      end: null,
+    };
+
+    thisFinder.render();
 
     /*     thisFinder.possibleToClickFields = {};
         for (let x = 1; x <= 10; x++) {
@@ -56,6 +61,24 @@ class Finder {
         thisFinder.element.querySelector('.finder-grid').innerHTML = gridHtml;
       }
     }
+
+    for (let x in thisFinder.gridObj) {
+      for (let y in thisFinder.gridObj[x]) {
+        if (thisFinder.gridObj[x][y]) {
+          const clickedfield = document.querySelector('[data-x="' + x + '"][data-y="' + y + '"]');
+          clickedfield.classList.add('clicked-field');
+        }
+      }
+    }
+
+    for (let point in thisFinder.startEndPoints) {
+      for (let axis in thisFinder.startEndPoints[point]) {
+        console.log(thisFinder.startEndPoints[point])
+      }
+      console.log(thisFinder.startEndPoints[point])
+      //const startEndField = document.querySelector('[data-x="' + thisFinder.startEndPoints[point].x + '"][data-y="' + thisFinder.startEndPoints[point].y + '"]');
+      //startEndField.classList.add('start-end');
+    }
     thisFinder.initActions();
   }
 
@@ -84,6 +107,40 @@ class Finder {
         }
       });
     }
+
+    if (thisFinder.step === 2) {
+      thisFinder.element.querySelector('.finder-button').addEventListener('click', function (event) {
+        event.preventDefault();
+        if (thisFinder.startEndPoints.start != null && thisFinder.startEndPoints.end != null) {
+          thisFinder.changeStep(3);
+        } else {
+          alert('Please choose start and end point');
+        }
+      });
+
+      thisFinder.element.querySelector('.finder-grid').addEventListener('click', function (event) {
+        event.preventDefault();
+        if (event.target.classList.contains('field')) {
+          if (event.target.classList.contains('clicked-field')) {
+            thisFinder.stepTwo(event.target);
+          } else {
+            alert('You have to choose start and end point from previously selected fields');
+          }
+        }
+      });
+    }
+
+    if (thisFinder.step === 3) {
+      thisFinder.element.querySelector('.finder-button').addEventListener('click', function (event) {
+        event.preventDefault();
+        thisFinder.startEndPoints = {
+          start: null,
+          end: null,
+        };
+        thisFinder.changeStep(1);
+      });
+    }
+
   }
 
   matchedFields(field) {
@@ -117,13 +174,91 @@ class Finder {
     //thisFinder.possibleToClick(coordinates)
   }
 
-  /* possibleToClick(coordinates) {
+  stepTwo(field) {
     const thisFinder = this;
 
+
+
+    const coordinates = {
+      x: field.getAttribute('data-x'),
+      y: field.getAttribute('data-y')
+    };
+
+    console.log('test1')
+    console.log(thisFinder.startEndPoints)
+
+    if (thisFinder.startEndPoints.start === null) {
+      console.log('test2')
+      if (thisFinder.startEndPoints.end === null) {
+        field.classList.add('start-end');
+        thisFinder.startEndPoints.start = coordinates;
+        console.log('test3')
+      } else {
+        console.log('test4')
+        if (field.classList.contains('start-end')) {
+          field.classList.remove('start-end');
+          thisFinder.startEndPoints.end = null
+          console.log('test5')
+        } else {
+          field.classList.add('start-end');
+          thisFinder.startEndPoints.start = coordinates;
+          console.log('test6')
+        }
+      }
+    } else {
+      console.log('test7')
+      if (thisFinder.startEndPoints.end === null) {
+        console.log('test8')
+        if (field.classList.contains('start-end')) {
+          console.log('test9')
+          field.classList.remove('start-end');
+          thisFinder.startEndPoints.start = null
+        } else {
+          console.log('test10')
+          field.classList.add('start-end');
+          thisFinder.startEndPoints.end = coordinates;
+        }
+      } else {
+        console.log('test11')
+        if (field.classList.contains('start-end')) {
+          console.log('test12')
+          field.classList.remove('start-end');
+          console.log(coordinates)
+          console.log(thisFinder.startEndPoints.start)
+          if ((thisFinder.startEndPoints.start.x == coordinates.x) && (thisFinder.startEndPoints.start.y == coordinates.y)) {
+            console.log('test13')
+            thisFinder.startEndPoints.start = null
+          } else {
+            console.log('test14')
+            thisFinder.startEndPoints.end = null
+          }
+        } else {
+          console.log('test15')
+          alert('You have already choosen start and end point. Please click the button to check the fastest route')
+        }
+
+
+      }
+
+    }
+
+    console.log(thisFinder.startEndPoints)
+
+  }
+
+  //thisFinder.startEndPoints.start = coordinates;
+  //console.log(thisFinder.startEndPoints)
+
+
+  //}
+
+  /* possibleToClick(coordinates) {
+    const thisFinder = this;
+  
     console.log(coordinates.x)
-
+  
     if (thisFinder.gridObj[coordinates.x][coordinates.y] == true) {
-
+  
       if (coordinates.x > 1) {
         const possibleClicked = document.querySelector('[data-x="' + (parseInt(coordinates.x) - 1) + '"][data-y="' + coordinates.y + '"]');
         possibleClicked.classList.add('possible-to-click')
@@ -141,9 +276,9 @@ class Finder {
         possibleClicked.classList.add('possible-to-click')
       }
     }
-
+  
     if (thisFinder.gridObj[coordinates.x][coordinates.y] == false) {
-
+  
       if (coordinates.x > 1) {
         const possibleClicked = document.querySelector('[data-x="' + (parseInt(coordinates.x) + 1) + '"][data-y="' + coordinates.y + '"]');
         possibleClicked.classList.remove('possible-to-click')
@@ -162,5 +297,6 @@ class Finder {
       }
     }
   } */
+  //}
 }
 export default Finder;
