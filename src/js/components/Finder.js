@@ -71,14 +71,14 @@ class Finder {
       }
     }
 
-    for (let point in thisFinder.startEndPoints) {
+    /* for (let point in thisFinder.startEndPoints) {
       for (let axis in thisFinder.startEndPoints[point]) {
-        console.log(thisFinder.startEndPoints[point])
+        console.log(thisFinder.startEndPoints[point]);
       }
-      console.log(thisFinder.startEndPoints[point])
+      console.log(thisFinder.startEndPoints[point]);
       //const startEndField = document.querySelector('[data-x="' + thisFinder.startEndPoints[point].x + '"][data-y="' + thisFinder.startEndPoints[point].y + '"]');
       //startEndField.classList.add('start-end');
-    }
+    } */
     thisFinder.initActions();
   }
 
@@ -138,6 +138,15 @@ class Finder {
           end: null,
         };
         thisFinder.changeStep(1);
+        for (let x in thisFinder.gridObj) {
+          for (let y in thisFinder.gridObj[x]) {
+            if (thisFinder.gridObj[x][y]) {
+              const clickedfield = document.querySelector('[data-x="' + x + '"][data-y="' + y + '"]');
+              clickedfield.classList.remove('clicked-field');
+              thisFinder.gridObj[x][y] = false;
+            }
+          }
+        }
       });
     }
 
@@ -184,57 +193,42 @@ class Finder {
       y: field.getAttribute('data-y')
     };
 
-    console.log('test1')
-    console.log(thisFinder.startEndPoints)
+    console.log(thisFinder.startEndPoints);
 
     if (thisFinder.startEndPoints.start === null) {
-      console.log('test2')
       if (thisFinder.startEndPoints.end === null) {
         field.classList.add('start-end');
         thisFinder.startEndPoints.start = coordinates;
-        console.log('test3')
       } else {
-        console.log('test4')
         if (field.classList.contains('start-end')) {
           field.classList.remove('start-end');
-          thisFinder.startEndPoints.end = null
-          console.log('test5')
+          thisFinder.startEndPoints.end = null;
         } else {
           field.classList.add('start-end');
           thisFinder.startEndPoints.start = coordinates;
-          console.log('test6')
         }
       }
     } else {
-      console.log('test7')
       if (thisFinder.startEndPoints.end === null) {
-        console.log('test8')
         if (field.classList.contains('start-end')) {
-          console.log('test9')
           field.classList.remove('start-end');
-          thisFinder.startEndPoints.start = null
+          thisFinder.startEndPoints.start = null;
         } else {
-          console.log('test10')
           field.classList.add('start-end');
           thisFinder.startEndPoints.end = coordinates;
         }
       } else {
-        console.log('test11')
         if (field.classList.contains('start-end')) {
-          console.log('test12')
           field.classList.remove('start-end');
-          console.log(coordinates)
-          console.log(thisFinder.startEndPoints.start)
+          console.log(coordinates);
+          console.log(thisFinder.startEndPoints.start);
           if ((thisFinder.startEndPoints.start.x == coordinates.x) && (thisFinder.startEndPoints.start.y == coordinates.y)) {
-            console.log('test13')
-            thisFinder.startEndPoints.start = null
+            thisFinder.startEndPoints.start = null;
           } else {
-            console.log('test14')
-            thisFinder.startEndPoints.end = null
+            thisFinder.startEndPoints.end = null;
           }
         } else {
-          console.log('test15')
-          alert('You have already choosen start and end point. Please click the button to check the fastest route')
+          alert('You have already choosen start and end point. Please click the button to check the fastest route');
         }
 
 
@@ -242,7 +236,7 @@ class Finder {
 
     }
 
-    console.log(thisFinder.startEndPoints)
+    console.log(thisFinder.startEndPoints);
 
   }
 
